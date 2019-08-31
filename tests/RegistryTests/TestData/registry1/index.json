@@ -1,0 +1,128 @@
+{
+  "id": "http://feed1.test/",
+  "title": "Test Feed 1",
+  "updated": "2018-12-31T00:55:19.303511+00:00",
+  "packages": [
+    {
+      "id": "test-package-1",
+      "name": "Test Package 1",
+      "description": "Testing packages, part 1",
+      "type": "Theme",
+      "published": "2018-12-31T00:55:19.2841065+00:00",
+      "updated": "2018-12-31T00:55:19.303511+00:00",
+      "license": {
+        "name": "MIT",
+        "url": "http://feed1.test/license/MIT"
+      },
+      "author": {
+        "name": "User One",
+        "alias": "user1",
+        "email": "one@user.test",
+        "homepage": "http://feed1.test/users/user1",
+        "social": null
+      },
+      "homepage": "http://feed1.test/packages/test-package-1",
+      "icon": "http://feed1.test/packages/test-package-1/icon.png",
+      "screenshot": "http://feed1.test/packages/test-package-1/screenshot.png",
+      "tags": [
+        "test",
+        "package",
+        "one",
+        "theme"
+      ],
+      "features": [
+        "package",
+        "theme"
+      ],
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "http://feed1.test/packages/test-package-1/test-package-1-1.0.0.zip",
+          "updated": "2018-12-31T00:55:19.2841065+00:00",
+          "size": 382,
+          "sha256": "55E55E7131A6164FD6302D43E84FFA1867601BD98A282A23E0086794F2746952"
+        },
+        {
+          "version": "1.0.1",
+          "url": "http://feed1.test/packages/test-package-1/test-package-1-1.0.1.zip",
+          "updated": "2018-12-31T00:55:19.2929625+00:00",
+          "size": 381,
+          "sha256": "639900A1BCBDA147C0C83BF11BF820CC24A1DC886BE0629D95759DD90513DB9C"
+        },
+        {
+          "version": "1.0.2",
+          "url": "http://feed1.test/packages/test-package-1/test-package-1-1.0.2.zip",
+          "updated": "2018-12-31T00:55:19.2982856+00:00",
+          "size": 344,
+          "sha256": "8447BBF2C66C5626183B15D4F013771992C4C97E9B0E51010DB2E6CD31F12112"
+        },
+        {
+          "version": "1.0.3",
+          "url": "http://feed1.test/packages/test-package-1/test-package-1-1.0.3.zip",
+          "updated": "2018-12-31T00:55:19.303511+00:00",
+          "size": 382,
+          "sha256": "E6628D78D5AE69512A2D46CF2113FA6C122C07F1ED29D37961E3152D5F74C167"
+        }
+      ]
+    },
+    {
+      "id": "test-package-2",
+      "name": "Test Package 2",
+      "type": "Plugin"
+    },
+    {
+      "id": "test-package-3",
+      "name": "Test Package 3",
+      "type": "Plugin",
+      "versions": []
+    },
+    {
+      "id": "test-package-4",
+      "name": "Test Package 4",
+      "type": "Plugin",
+      "versions": [
+        {
+          "version": "1.0.3",
+          "url": "http://feed1.test/packages/test-package-4/test-package-4-1.0.3.zip",
+          "updated": "2018-12-31T00:55:19.303511+00:00",
+          "size": 344,
+          "sha256": "E6628D78D5AE69512A2D46CF2113FA6C122C07F1ED29D37961E3152D5F74C167"
+        }
+      ]
+    },
+    {
+      "id": "test-package-5",
+      "name": "Test Package 5",
+      "type": "Plugin",
+      "deps": {
+        "test-package-1": "^1.0.1"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "http://feed1.test/packages/test-package-5/test-package-5-1.0.0.zip",
+          "updated": "2019-01-17T14:06:12+00:00",
+          "size": 462,
+          "sha256": "19F24AAB9020EAD18DA1F4278321F766427B699DD8007A64AE715413CC78C607"
+        }
+      ]
+    },
+    {
+      "id": "test-package-6",
+      "name": "Test Package 6",
+      "type": "Plugin",
+      "deps": {
+        "test-package-5": "^1.0.0"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "http://feed1.test/packages/test-package-6/test-package-6-1.0.0.zip",
+          "updated": "2019-01-17T14:06:12+00:00",
+          "size": 464,
+          "sha256": "ABF5F3388709FE0B512FB2184E4BBEA7C7ABCE81681FC774B0FA95A48CACCFEA"
+        }
+      ]
+    }
+  ]
+}
