@@ -13,7 +13,7 @@ namespace Bit0.Registry.Core
         IPack Get(String name, String semVer);
         IPack Get(Package package, String semVer);
         IPack Get(PackageVersion packageVersion);
-        IPack Get(String url);
+        IPack Get(Uri uri);
         IEnumerable<IPack> GetDependancyPacks(Package package);
         IDictionary<String, String> GetDependancies(Package package);
         IEnumerable<Package> Packages { get; }

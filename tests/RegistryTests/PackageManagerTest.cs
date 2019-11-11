@@ -136,6 +136,21 @@ namespace RegistryTests
         }
 
         [Fact]
+        public void GetLatestPackage()
+        {
+
+            var manager = GetManager();
+            var pack = manager.Get("test-package-1");
+
+            pack.Id.Should().Be("test-package-1");
+            pack.Name.Should().Be("Test Package 1");
+            pack.Version.Should().Be("1.0.3");
+            pack.Description.Should().Be("Testing packages, part 1");
+            pack.Homepage.Should().Be("http://feed1.test/packages/test-package-1");
+            pack.PackFile.Should().NotBeNull();
+        }
+
+        [Fact]
         public void GetNonExistingPackage1()
         {
 

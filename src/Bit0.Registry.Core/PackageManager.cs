@@ -97,7 +97,7 @@ namespace Bit0.Registry.Core
             }
         }
 
-        public IPack Get(String name, String semVer)
+        public IPack Get(String name, String semVer = "" /* Empty String will get the latest package */)
         {
             return Get(GetPackage(name, semVer), semVer);
         }
@@ -109,19 +109,19 @@ namespace Bit0.Registry.Core
 
         public IPack Get(PackageVersion version)
         {
-            return Get(version.Url);
+            return Get(new Uri(version.Url));
         }
 
-        public IPack Get(String url)
+        public IPack Get(Uri uri)
         {
             try
             {
                 var file = new FileInfo($"{Path.GetTempFileName()}.pack.zip");
-                _webClient.DownloadFile(url, file.FullName);
+                _webClient.DownloadFile(uri, file.FullName);
 
                 ZipArchive zip;
                 zip = ZipFile.Open(file.FullName, ZipArchiveMode.Read, Encoding.UTF8);
-                _logger.LogInformation(new EventId(3000), $"Downloaded Pack archive: {url}");
+                _logger.LogInformation(new EventId(3000), $"Downloaded Pack archive: {uri}");
 
                 IPack pack;
                 var packEntry = zip.GetEntry("pack.json");
@@ -147,7 +147,7 @@ namespace Bit0.Registry.Core
             }
             catch (Exception ex)
             {
-                var exp = new InvalidPackFileException(url, ex);
+                var exp = new InvalidPackFileException(uri.ToString(), ex);
                 _logger.LogError(exp.EventId, exp, "Invalid Pack file");
                 throw exp;
             }
