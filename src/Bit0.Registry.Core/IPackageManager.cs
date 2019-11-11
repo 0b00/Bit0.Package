@@ -10,7 +10,7 @@ namespace Bit0.Registry.Core
         Package GetPackage(String name, String semVer);
         PackageVersion GetPackageVersion(String name, String semVer);
         PackageVersion GetPackageVersion(Package package, String semVer);
-        IPack Get(String name, String semVer);
+        IPack Get(String name, String semVer = "");
         IPack Get(Package package, String semVer);
         IPack Get(PackageVersion packageVersion);
         IPack Get(Uri uri);
