@@ -10,6 +10,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using Version = SemVer.Version;
 
 namespace Bit0.Registry.Core
@@ -20,11 +21,11 @@ namespace Bit0.Registry.Core
         private readonly ILogger<IPackageManager> _logger;
         private readonly WebClient _webClient;
 
-        public PackageManager(DirectoryInfo packageCacheDir, WebClient webClient, ILogger<IPackageManager> logger)
+        public PackageManager(ILogger<IPackageManager> logger, DirectoryInfo packageCacheDir = null, WebClient webClient = null)
         {
-            _packageCacheDir = packageCacheDir;
+            _packageCacheDir = packageCacheDir ?? new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".packs"));
+            _webClient = webClient ?? new WebClient();
             _logger = logger;
-            _webClient = webClient;
         }
 
         public void AddFeed(String name, String url)
@@ -64,6 +65,12 @@ namespace Bit0.Registry.Core
 
             if (package == null)
             {
+                // TODO: Use CombinePath Extensions
+                var packDir = new DirectoryInfo($"{_packageCacheDir.FullName}/{name}/{semVer}");
+            }
+
+            if (package == null)
+            {
                 var exp = new PackageNotFoundException(name, semVer);
                 _logger.LogError(exp.EventId, exp, exp.Message);
                 throw exp;
@@ -97,22 +104,46 @@ namespace Bit0.Registry.Core
             }
         }
 
-        public IPack Get(String name, String semVer = "" /* Empty String will get the latest package */)
+        public IPack GetPack(String name)
         {
-            return Get(GetPackage(name, semVer), semVer);
+            var match = new Regex(@"(.+)\@(.+)").Match(name);
+            var version = String.Empty;
+
+            if (match.Success)
+            {
+                name = match.Groups[1].Value;
+                version = match.Groups[2].Value;
+            }
+
+            switch (name)
+            {
+                case var _ when name.StartsWith("http"):
+                    return GetPack(new Uri(name));
+                case var _ when name.StartsWith("github"):
+                    return GetPackFromGithub(name, version);
+                default:
+                    return GetPack(name, version);
+            }
+
+            throw new NotImplementedException();
         }
 
-        public IPack Get(Package package, String semVer)
+        public IPack GetPack(String name, String semVer = "" /* Empty String will get the latest package */)
         {
-            return Get(GetPackageVersion(package, semVer));
+            return GetPack(GetPackage(name, semVer), semVer);
         }
 
-        public IPack Get(PackageVersion version)
+        public IPack GetPack(Package package, String semVer)
         {
-            return Get(new Uri(version.Url));
+            return GetPack(GetPackageVersion(package, semVer));
         }
 
-        public IPack Get(Uri uri)
+        public IPack GetPack(PackageVersion version)
+        {
+            return GetPack(new Uri(version.Url));
+        }
+
+        public IPack GetPack(Uri uri)
         {
             try
             {
@@ -133,7 +164,7 @@ namespace Bit0.Registry.Core
                 }
 
                 // TODO: Use CombinePath Extensions
-                var packDir = new DirectoryInfo($"{_packageCacheDir.FullName}/{pack.Id}/{pack.Version}");
+                var packDir = new DirectoryInfo(Path.Combine(_packageCacheDir.FullName, pack.Id, pack.Version));
 
                 if (!packDir.Exists)
                 {
@@ -153,11 +184,28 @@ namespace Bit0.Registry.Core
             }
         }
 
+        private IPack GetPackFromGithub(String name, String version = "latest")
+        {
+            var match = new Regex(@"^github\:(.+)\/(.+)$").Match(name);
+            var username = String.Empty;
+
+            if (match.Success)
+            {
+                username = match.Groups[1].Value;
+                name = match.Groups[2].Value;
+            }
+
+            var uri = version == "latest" || version == String.Empty
+                ? new Uri($"https://github.com/{username}/{name}/releases/latest/download/{name}.zip")
+                : new Uri($"https://github.com/{username}/{name}/releases/download/{version}/{name}.zip");
+
+            return GetPack(uri);
+        }
 
         public IEnumerable<IPack> GetDependancyPacks(Package package)
         {
             var deps = GetDependancies(package);
-            var lst = deps.Select(dep => Get(dep.Key, dep.Value));
+            var lst = deps.Select(dep => GetPack(dep.Key, dep.Value));
 
             return lst;
         }

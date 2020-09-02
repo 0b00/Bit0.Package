@@ -37,7 +37,7 @@ namespace RegistryTests
 
         private PackageManager GetManager()
         {
-            var manager = new PackageManager(_cacheDir, _webClient, _logger);
+            var manager = new PackageManager(_logger, _cacheDir, _webClient);
             manager.AddFeed("default", "http://feed1.test/");
             return manager;
         }
@@ -45,7 +45,7 @@ namespace RegistryTests
         [Fact]
         public void AddNonExistingFeed()
         {
-            var manager = new PackageManager(_cacheDir, _webClient, _logger);
+            var manager = new PackageManager(_logger, _cacheDir, _webClient);
             var name = "default";
             var url = "http://feed.test/";
 
@@ -60,7 +60,7 @@ namespace RegistryTests
         [Fact]
         public void AddExistingFeed()
         {
-            var manager = new PackageManager(_cacheDir, _webClient, _logger);
+            var manager = new PackageManager(_logger, _cacheDir, _webClient);
             var name = "default";
             var url = "http://feed1.test/";
 
@@ -125,7 +125,7 @@ namespace RegistryTests
         {
 
             var manager = GetManager();
-            var pack = manager.Get("test-package-1", "1.0.0");
+            var pack = manager.GetPack("test-package-1", "1.0.0");
 
             pack.Id.Should().Be("test-package-1");
             pack.Name.Should().Be("Test Package 1");
@@ -135,12 +135,60 @@ namespace RegistryTests
             pack.PackFile.Should().NotBeNull();
         }
 
+
+        [Fact]
+        public void GetPackageFromUrl()
+        {
+            var manager = GetManager();
+            var pack = manager.GetPack("http://feed1.test/packages/test-package-1/test-package-1-1.0.3.zip");
+
+            pack.Id.Should().Be("test-package-1");
+            pack.Name.Should().Be("Test Package 1");
+            pack.Version.Should().Be("1.0.3");
+            pack.Description.Should().Be("Testing packages, part 1");
+            pack.Homepage.Should().Be("http://feed1.test/packages/test-package-1");
+            pack.PackFile.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void GetPackageFromGithubLatest()
+        {
+            var manager = new PackageManager(_logger);
+            var pack = manager.GetPack("github:0b00/test-package-1");
+
+            pack.Id.Should().Be("test-package-1");
+            pack.Name.Should().Be("Test Package 1");
+            pack.Version.Should().Be("1.0.3");
+            pack.Description.Should().Be("Testing packages, part 1");
+            pack.Homepage.Should().Be("http://feed1.test/packages/test-package-1");
+            pack.PackFile.Should().NotBeNull();
+        }
+
+        [Theory]
+        [InlineData("1.0.0")]
+        [InlineData("1.0.1")]
+        [InlineData("1.0.2")]
+        public void GetPackageFromGithuByVersion(String version)
+        {
+
+            var manager = new PackageManager(_logger);
+            var pack = manager.GetPack($"github:0b00/test-package-1@{version}");
+
+            pack.Id.Should().Be("test-package-1");
+            pack.Name.Should().Be("Test Package 1");
+            pack.Version.Should().Be(version);
+            pack.Description.Should().Be("Testing packages, part 1");
+            pack.Homepage.Should().Be("http://feed1.test/packages/test-package-1");
+            pack.PackFile.Should().NotBeNull();
+        }
+
+
         [Fact]
         public void GetLatestPackage()
         {
 
             var manager = GetManager();
-            var pack = manager.Get("test-package-1");
+            var pack = manager.GetPack("test-package-1");
 
             pack.Id.Should().Be("test-package-1");
             pack.Name.Should().Be("Test Package 1");
@@ -155,7 +203,7 @@ namespace RegistryTests
         {
 
             var manager = GetManager();
-            Action action = () => manager.Get("test-package-x", "1.0.0");
+            Action action = () => manager.GetPack("test-package-x", "1.0.0");
 
             action.Should().Throw<PackageNotFoundException>();
 
@@ -170,7 +218,7 @@ namespace RegistryTests
         public void GetNonExistingPackageVersion1(String name)
         {
             var manager = GetManager();
-            Action action = () => manager.Get(name, "1.0.0");
+            Action action = () => manager.GetPack(name, "1.0.0");
 
             action.Should().Throw<PackageVersionNotFoundException>();
 
@@ -182,7 +230,7 @@ namespace RegistryTests
         public void GetNonExistingPackageVersion2()
         {
             var manager = GetManager();
-            Action action = () => manager.Get("test-package-4", "1.0.3");
+            Action action = () => manager.GetPack("test-package-4", "1.0.3");
 
             action.Should().Throw<InvalidPackFileException>();
 
@@ -206,7 +254,7 @@ namespace RegistryTests
         public void TestDeps1()
         {
             var manager = GetManager();
-            var pack = manager.Get("test-package-5", "1.0.0");
+            var pack = manager.GetPack("test-package-5", "1.0.0");
 
             pack.Id.Should().Be("test-package-5");
             pack.Name.Should().Be("Test Package 5");

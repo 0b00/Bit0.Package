@@ -10,10 +10,11 @@ namespace Bit0.Registry.Core
         Package GetPackage(String name, String semVer);
         PackageVersion GetPackageVersion(String name, String semVer);
         PackageVersion GetPackageVersion(Package package, String semVer);
-        IPack Get(String name, String semVer = "");
-        IPack Get(Package package, String semVer);
-        IPack Get(PackageVersion packageVersion);
-        IPack Get(Uri uri);
+        IPack GetPack(String name);
+        IPack GetPack(String name, String semVer = "");
+        IPack GetPack(Package package, String semVer);
+        IPack GetPack(PackageVersion packageVersion);
+        IPack GetPack(Uri uri);
         IEnumerable<IPack> GetDependancyPacks(Package package);
         IDictionary<String, String> GetDependancies(Package package);
         IEnumerable<Package> Packages { get; }
