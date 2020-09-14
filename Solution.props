@@ -1,0 +1,7 @@
+<Project>  
+  <PropertyGroup>
+    <Version>5.2</Version>
+    <PackageProjectUrl Condition="'$(PackageProjectUrl)'==''">https://nullbit.se/Registry</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/0b00/Bit0.Registry</RepositoryUrl>
+  </PropertyGroup>
+</Project>

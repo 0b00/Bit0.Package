@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Common.props = Common.props
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
+		Solution.props = Solution.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{7D9D5161-33DE-44E4-BEEE-6AFF566F7584}"
@@ -19,6 +20,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bit0.Registry.Core", "src\Bit0.Registry.Core\Bit0.Registry.Core.csproj", "{18673597-B1E0-4154-ADA4-D1D51272E197}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistryTests", "tests\RegistryTests\RegistryTests.csproj", "{85DD03EB-D0BB-460B-8622-E15C5401C9D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{EFA6066A-D1BE-42A9-B5F9-89E933321A95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{5C416F7D-F8DD-4B41-BB8C-E6B351F81310}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\package.yml = .github\workflows\package.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +49,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{18673597-B1E0-4154-ADA4-D1D51272E197} = {7D9D5161-33DE-44E4-BEEE-6AFF566F7584}
 		{85DD03EB-D0BB-460B-8622-E15C5401C9D9} = {9CAF0590-B9C4-4BA8-97A9-84A385A70247}
+		{EFA6066A-D1BE-42A9-B5F9-89E933321A95} = {6166280C-667D-4DFB-9A82-FDEBDF2344BB}
+		{5C416F7D-F8DD-4B41-BB8C-E6B351F81310} = {EFA6066A-D1BE-42A9-B5F9-89E933321A95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {36DB735C-FF46-4F0C-B4B6-992C52CFB201}

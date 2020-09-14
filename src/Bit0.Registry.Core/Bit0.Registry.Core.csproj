@@ -1,22 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    
+  <PropertyGroup>    
     <RootNamespace>Bit0.Registry.Core</RootNamespace>
     <Description>Registry Core for loading assets into project during runtime. Can be used with Bit0.Plugins.Loader to load plugins.</Description>
-    <PackageProjectUrl>https://nullbit.se/project/Bit0.Registry</PackageProjectUrl>
     <PackageTags>registry, packages, package, management</PackageTags>
-
-    <Version>5.1.0</Version>
-    <PackageVersion>$(Version)</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.8" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="SemanticVersioning" Version="1.2.2" />
   </ItemGroup>
 
+  <Import Project="..\..\Solution.props" />
   <Import Project="..\..\Common.props" />
 </Project>
