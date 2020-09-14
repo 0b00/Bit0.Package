@@ -12,6 +12,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using Version = SemVer.Version;
+using Range = SemVer.Range;
 
 namespace Bit0.Registry.Core
 {
