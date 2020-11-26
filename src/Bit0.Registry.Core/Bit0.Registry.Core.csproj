@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="SemanticVersioning" Version="1.2.2" />
+    <PackageReference Include="SemanticVersioning" Version="1.3.0" />
   </ItemGroup>
 
   <Import Project="..\..\Solution.props" />
