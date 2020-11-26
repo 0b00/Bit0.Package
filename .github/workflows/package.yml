@@ -82,12 +82,7 @@ jobs:
       run: dotnet nuget push "./nupkg/*.nupkg" --skip-duplicate --no-symbols true --source https://www.myget.org/F/bit0/api/v3/index.json --api-key ${{ secrets.MYGET_API_KEY }}
 
     - name: Publish nugets to GitHub
-      uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
-      with:
-        nupkg-path:  './nupkg/*.nupkg'
-        repo-owner:  ${{ github.repository_owner }}
-        gh-user:  ${{ github.actor }}
-        token:  ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget push "./nupkg/*.nupkg" --skip-duplicate --no-symbols true --source https://nuget.pkg.github.com/${{ github.repository_owner }} --api-key ${{ secrets.GITHUB_TOKEN }}
 
     - name: Generate Changelog
       id: changelog
