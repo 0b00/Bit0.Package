@@ -1,0 +1,106 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - "src/**"
+    - "tests/**"
+  pull_request:
+    branches:
+    - master
+    paths:
+    - "src/**"
+    - "tests/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs: 
+      PACKAGE_VERSION: ${{ steps.setup.outputs.PACKAGE_VERSION }}
+      DOTNET_VERSION: ${{ steps.setup.outputs.DOTNET_VERSION }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Variables
+      id: setup
+      run: |
+        version=$(grep -oPm1 "(?<=<VersionPrefix>)[^<]+" Solution.props).$GITHUB_RUN_NUMBER
+        dotnet_version=$(grep -oPm1 "(?<=<DotNetVersion>)[^<]+" Common.props)
+        rev=$GITHUB_SHA
+        echo "::set-output name=PACKAGE_VERSION::$version"
+        echo "::set-output name=DOTNET_VERSION::$dotnet_version"
+        echo "::set-output name=REV_ID::$rev"
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ steps.setup.outputs.DOTNET_VERSION }}
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+
+    - name: Package
+      run: dotnet pack --no-restore -c Release -p:VersionPrefix=${{ steps.setup.outputs.PACKAGE_VERSION }} -p:SourceRevisionId=${{ steps.setup.outputs.REV_ID }}
+
+    - name: Collect Packages
+      run: |
+        mkdir dist
+        find ./src/ -name "*.nupkg" -exec cp {} dist/ \;
+
+    - name: Upoad Artifect
+      uses: actions/upload-artifact@master
+      with:
+        name: nupkg
+        path: ./dist/*.nupkg
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: ${{ needs.build.outputs.DOTNET_VERSION }}
+
+    - name: Download Artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: nupkg
+
+    - name: Publish nugets to MyGet
+      run: dotnet nuget push "./nupkg/*.nupkg" --skip-duplicate --no-symbols true --source https://www.myget.org/F/bit0/api/v3/index.json --api-key ${{ secrets.MYGET_API_KEY }}
+
+    - name: Publish nugets to GitHub
+      run: dotnet nuget push "./nupkg/*.nupkg" --skip-duplicate --no-symbols true --source https://nuget.pkg.github.com/${{ github.repository_owner }} --api-key ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Generate Changelog
+      id: changelog
+      uses: scottbrenner/generate-changelog-action@master
+      env:
+        REPO: ${{ github.repository }}
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ needs.build.outputs.PACKAGE_VERSION }}
+        release_name: Release v${{ needs.build.outputs.PACKAGE_VERSION }}
+        body: |
+          ${{ steps.changelog.outputs.changelog }}
+        draft: false
+        prerelease: false

@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31606.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{409168AE-A37A-4125-9817-E10DF24465CA}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.gitmodules = .gitmodules
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		Common.props = Common.props
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+		Solution.props = Solution.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bit0.Registry.Core", "src\Bit0.Registry.Core\Bit0.Registry.Core.csproj", "{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{1463E9FE-9D06-4624-9078-00C575B412E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F8045412-4E8F-47A7-9C66-F539DF8660B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistryTests", "tests\RegistryTests\RegistryTests.csproj", "{DC201430-8251-44AB-B259-74935213EB61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Debug|x64.Build.0 = Debug|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Debug|x86.Build.0 = Debug|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Release|x64.ActiveCfg = Release|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Release|x64.Build.0 = Release|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Release|x86.ActiveCfg = Release|Any CPU
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}.Release|x86.Build.0 = Release|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Debug|x64.Build.0 = Debug|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Debug|x86.Build.0 = Debug|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Release|x64.ActiveCfg = Release|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Release|x64.Build.0 = Release|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Release|x86.ActiveCfg = Release|Any CPU
+		{DC201430-8251-44AB-B259-74935213EB61}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16} = {1463E9FE-9D06-4624-9078-00C575B412E5}
+		{DC201430-8251-44AB-B259-74935213EB61} = {F8045412-4E8F-47A7-9C66-F539DF8660B5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99E23DCD-C782-4D09-8D92-6CAE7D6BA6FF}
+	EndGlobalSection
+EndGlobal
