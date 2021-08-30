@@ -75,6 +75,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ needs.build.outputs.DOTNET_VERSION }}
+        include-prerelease: true
 
     - name: Download Artifact
       uses: actions/download-artifact@v1
