@@ -3,7 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31606.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{409168AE-A37A-4125-9817-E10DF24465CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bit0.Registry.Core", "src\Bit0.Registry.Core\Bit0.Registry.Core.csproj", "{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{1463E9FE-9D06-4624-9078-00C575B412E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F8045412-4E8F-47A7-9C66-F539DF8660B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistryTests", "tests\RegistryTests\RegistryTests.csproj", "{DC201430-8251-44AB-B259-74935213EB61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{B8D3A25C-3EF3-42D5-A3C0-5D1E0B7EDCFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{DFD3E426-79F5-40D6-B156-BDAB5FC2FB54}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\package.yml = .github\workflows\package.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8461D3FA-8344-4F55-95D0-CD90CAD0E216}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
@@ -15,14 +30,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		README.md = README.md
 		Solution.props = Solution.props
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bit0.Registry.Core", "src\Bit0.Registry.Core\Bit0.Registry.Core.csproj", "{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{1463E9FE-9D06-4624-9078-00C575B412E5}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F8045412-4E8F-47A7-9C66-F539DF8660B5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistryTests", "tests\RegistryTests\RegistryTests.csproj", "{DC201430-8251-44AB-B259-74935213EB61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +72,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6B9770F3-C4D5-49FB-AB96-1BC17A738E16} = {1463E9FE-9D06-4624-9078-00C575B412E5}
 		{DC201430-8251-44AB-B259-74935213EB61} = {F8045412-4E8F-47A7-9C66-F539DF8660B5}
+		{B8D3A25C-3EF3-42D5-A3C0-5D1E0B7EDCFF} = {8461D3FA-8344-4F55-95D0-CD90CAD0E216}
+		{DFD3E426-79F5-40D6-B156-BDAB5FC2FB54} = {B8D3A25C-3EF3-42D5-A3C0-5D1E0B7EDCFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99E23DCD-C782-4D09-8D92-6CAE7D6BA6FF}
