@@ -27,7 +27,7 @@
   </PropertyGroup>
 
   <ProjectExtensions>
-    <DotNetVersion>6.0.100</DotNetVersion>
+    <DotNetVersion>6.0.x</DotNetVersion>
   </ProjectExtensions>
 
 </Project>
