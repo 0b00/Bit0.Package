@@ -1,7 +1,7 @@
 <Project>  
   <PropertyGroup>
-    <VersionPrefix>7.0.0</VersionPrefix>
-    <VersionSuffix>alpha.1</VersionSuffix>
+    <VersionPrefix>7.0</VersionPrefix>
+    <VersionSuffix>final</VersionSuffix>
     <PackageProjectUrl Condition="'$(PackageProjectUrl)'==''">https://github.com/0b00/Bit0.Registry</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/0b00/Bit0.Registry</RepositoryUrl>
