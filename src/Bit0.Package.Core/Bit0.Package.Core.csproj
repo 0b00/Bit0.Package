@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>    
-    <RootNamespace>Bit0.Registry.Core</RootNamespace>
+    <RootNamespace>Bit0.Package.Core</RootNamespace>
     <Description>Registry Core for loading assets into project during runtime. Can be used with Bit0.Plugins.Loader to load plugins.</Description>
     <PackageTags>registry; packages; package; management; manager</PackageTags>
   </PropertyGroup>

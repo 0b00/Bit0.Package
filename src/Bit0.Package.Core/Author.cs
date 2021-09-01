@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using System.Diagnostics.CodeAnalysis;
-using Newtonsoft.Json;
 
-namespace Bit0.Registry.Core
+namespace Bit0.Package.Core
 {
     [ExcludeFromCodeCoverage]
     public class Author

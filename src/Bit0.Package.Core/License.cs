@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Bit0.Registry.Core
+namespace Bit0.Package.Core
 {
     [ExcludeFromCodeCoverage]
     public class License

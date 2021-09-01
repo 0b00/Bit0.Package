@@ -1,4 +1,4 @@
-﻿namespace Bit0.Registry.Core.Extensions
+﻿namespace Bit0.Package.Core.Extensions
 {
     public static class PathExtentions
     {

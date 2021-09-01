@@ -1,13 +1,13 @@
-﻿using Bit0.Registry.Core.Exceptions;
-using Bit0.Registry.Core.Extensions;
-using Bit0.Registry.Core.Helpers;
+﻿using Bit0.Package.Core.Exceptions;
+using Bit0.Package.Core.Extensions;
+using Bit0.Package.Core.Helpers;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.IO.Compression;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Bit0.Registry.Core
+namespace Bit0.Package.Core
 {
     /// <summary>
     /// Helps acquire pack files from several sources

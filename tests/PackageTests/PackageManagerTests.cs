@@ -1,14 +1,14 @@
-using Bit0.Registry.Core;
-using Bit0.Registry.Core.Exceptions;
-using Bit0.Registry.Core.Extensions;
-using Bit0.Registry.Core.Helpers;
+using Bit0.Package.Core;
+using Bit0.Package.Core.Exceptions;
+using Bit0.Package.Core.Extensions;
+using Bit0.Package.Core.Helpers;
 using Divergic.Logging.Xunit;
 using FluentAssertions;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace RegistryTests
+namespace PackageTests
 {
     [ExcludeFromCodeCoverage]
     public class PackageManagerTests
