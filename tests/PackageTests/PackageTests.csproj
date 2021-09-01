@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Bit0.Registry.Core\Bit0.Registry.Core.csproj" />
+    <ProjectReference Include="..\..\src\Bit0.Package.Core\Bit0.Package.Core.csproj" />
   </ItemGroup>
 
 </Project>

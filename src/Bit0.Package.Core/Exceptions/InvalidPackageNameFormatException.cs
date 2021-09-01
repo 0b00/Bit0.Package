@@ -1,7 +1,7 @@
-﻿using Bit0.Registry.Core.Helpers;
+﻿using Bit0.Package.Core.Helpers;
 using Microsoft.Extensions.Logging;
 
-namespace Bit0.Registry.Core.Exceptions
+namespace Bit0.Package.Core.Exceptions
 {
     public class InvalidPackageNameFormatException : Exception
     {

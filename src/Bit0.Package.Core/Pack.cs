@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Bit0.Registry.Core
+namespace Bit0.Package.Core
 {
     /// <summary>
     /// Pack meta data

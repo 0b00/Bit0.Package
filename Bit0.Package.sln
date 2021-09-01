@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31606.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bit0.Registry.Core", "src\Bit0.Registry.Core\Bit0.Registry.Core.csproj", "{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bit0.Package.Core", "src\Bit0.Package.Core\Bit0.Package.Core.csproj", "{6B9770F3-C4D5-49FB-AB96-1BC17A738E16}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{1463E9FE-9D06-4624-9078-00C575B412E5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F8045412-4E8F-47A7-9C66-F539DF8660B5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistryTests", "tests\RegistryTests\RegistryTests.csproj", "{DC201430-8251-44AB-B259-74935213EB61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageTests", "tests\PackageTests\PackageTests.csproj", "{DC201430-8251-44AB-B259-74935213EB61}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{B8D3A25C-3EF3-42D5-A3C0-5D1E0B7EDCFF}"
 EndProject

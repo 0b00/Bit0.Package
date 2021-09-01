@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace Bit0.Registry.Core.Helpers
+namespace Bit0.Package.Core.Helpers
 {
     public static class LogEvents
     {
