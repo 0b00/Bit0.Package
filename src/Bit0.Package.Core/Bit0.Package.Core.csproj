@@ -2,7 +2,7 @@
 
   <PropertyGroup>    
     <RootNamespace>Bit0.Package.Core</RootNamespace>
-    <Description>Registry Core for loading assets into project during runtime. Can be used with Bit0.Plugins.Loader to load plugins.</Description>
+    <Description>Package Core for loading assets into project during runtime. Can be used together with Bit0.Plugins.Loader to load plug-ins.</Description>
     <PackageTags>registry; packages; package; management; manager</PackageTags>
   </PropertyGroup>
   
@@ -11,7 +11,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="SemanticVersioning" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
